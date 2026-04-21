@@ -1,0 +1,696 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body{
+    font-family: 'Poppins';
+    margin: 0;
+}
+:root{
+    --item1-transform: translate(-100%, -5%) scale(1.5);
+    --item1-filter: blur(30px);
+    --item1-zIndex: 11;
+    --item1-opacity: 0;
+
+    --item2-transform: translate(0, 0);
+    --item2-filter: blur(0);
+    --item2-zIndex: 10;
+    --item2-opacity: 1;
+
+    --item3-transform: translate(50%, 10%) scale(0.8);
+    --item3-filter: blur(10px);
+    --item3-zIndex: 9;
+    --item3-opacity: 1;
+
+    --item4-transform: translate(90%, 20%) scale(0.5);
+    --item4-filter: blur(30px);
+    --item4-zIndex: 8;
+    --item4-opacity: 1;
+
+    --item5-transform: translate(120%, 30%) scale(0.3);
+    --item5-filter: blur(40px);
+    --item5-zIndex: 7;
+    --item5-opacity: 0;
+}
+a{
+    text-decoration: none;
+    color: #555;
+}
+header{
+    width: 1140px;
+    max-width: 90%;
+    margin: auto;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+}
+/* es para que el nombre sea mas notable */
+header .logo{
+    font-weight: bold;
+}
+header nav a{
+    margin-left: 30px;
+}
+/* carousel */
+.carousel{
+    margin-top: -50px;
+    height: 800px;
+    overflow: hidden;
+    position: relative;
+}
+.carousel .list{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1140px;
+    max-width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80%;
+}
+.carousel .list .item{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100%;
+    font-size: 15px;
+}
+.carousel .list .item img{
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+}
+.carousel .list .item .detail{
+    opacity: 0;
+    pointer-events: none;
+}
+.carousel .list .item .intro{
+    position: absolute;
+    top: 50%;
+    /* right: 0; */
+    transform: translateY(-50%);
+    width: 400px;
+    opacity: 0;
+    pointer-events: none;
+}
+.carousel .list .item:nth-child(2) .intro{
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.5s;
+}
+.carousel .list .item:nth-child(n + 6){
+    opacity: 0;
+    pointer-events: none;
+}
+.carousel .list .item:nth-child(2){
+    transform: var(--item2-transform);
+    filter: var(--item2-filter);
+    z-index: var(--item2-zIndex);
+    opacity: var(--item2-opacity);
+}
+.carousel .list .item:nth-child(1){
+    transform: var(--item1-transform);
+    filter: var(--item1-filter);
+    z-index: var(--item1-zIndex);
+    opacity: var(--item1-opacity);
+    pointer-events: none;
+}
+.carousel .list .item:nth-child(3){
+    transform: var(--item3-transform);
+    filter: var(--item3-filter);
+    z-index: var(--item3-zIndex);
+    opacity: var(--item3-opacity);
+    filter: blur(10px);
+    z-index: 9;
+    opacity: 1;
+}
+.carousel .list .item:nth-child(4){
+    transform: var(--item4-transform);
+    filter: var(--item4-filter);
+    z-index: var(--item4-zIndex);
+    opacity: var(--item4-opacity);
+}
+.carousel .list .item:nth-child(5){
+    transform: var(--item5-transform);
+    filter: var(--item5-filter);
+    z-index: var(--item5-zIndex);
+    opacity: var(--item5-opacity);
+    pointer-events: none;
+}
+/* flechas */
+.arrows{
+    position: absolute;
+    bottom: 10px;
+    width: 1140px;
+    max-width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.arrows #next,
+.arrows #prev{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border-radius: 50%;
+    font-family: monospace;
+    font-size: large;
+    font-weight: bold;
+    border: 1px solid #555;
+}
+.arrows #back{
+    font-family: Poppins;
+    font-weight: 500;
+    border: none;
+    border-bottom: 1px solid #555;
+    letter-spacing: 3px;
+    background-color: transparent;
+    opacity: 0;
+    pointer-events: none;
+}
+.carousel .list .item .intro .title{
+    font-size: 2em;
+    line-height: 0.8em;
+}
+.carousel .list .item .intro .topic{
+    font-size: 4em;
+    font-weight: 500;
+}
+.carousel .list .item .intro .des{
+    font-size: small;
+}
+.carousel .list .item .intro .seeMore{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #555;
+    font-family: Poppins;
+    font-weight: bold;
+    margin-top: 1.2em;
+    padding: 5px 0;
+}
+.carousel .list .item:nth-child(2) .intro .title,
+.carousel .list .item:nth-child(2) .intro .topic,
+.carousel .list .item:nth-child(2) .intro .des,
+.carousel .list .item:nth-child(2) .intro .seeMore
+{
+    opacity: 0;
+    animation: showContent 0.5s 0.7s ease-in-out 1 forwards;
+}
+@keyframes showContent{
+    from{
+        transform: translateY(50px);
+        filter: blur(30px);
+    }to{
+        transform: translateY(0);
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+.carousel .list .item:nth-child(2) .intro .topic{
+    animation-delay: 0.9s;
+}
+.carousel .list .item:nth-child(2) .intro .des{
+    animation-delay: 1.1s;
+}
+.carousel .list .item:nth-child(2) .intro .seeMore{
+    animation-delay: 1.3s;
+}
+/* next click efect */
+.carousel.next .list .item:nth-child(1){
+    animation: positionItem2 0.5s ease-in-out 1 forwards;
+}
+@keyframes positionItem2{
+    from{
+        transform: var(--item2-transform);
+        filter: var(--item2-filter);
+        z-index: var(--item2-zIndex);
+        opacity: var(--item2-opacity);
+    }
+}
+.carousel.next .list .item:nth-child(2){
+    animation: positionItem3 0.7s ease-in-out 1 forwards;
+}
+@keyframes positionItem3{
+    from{
+        transform: var(--item3-transform);
+        filter: var(--item3-filter);
+        z-index: var(--item3-zIndex);
+        opacity: var(--item3-opacity);
+    }
+}
+.carousel.next .list .item:nth-child(3){
+    animation: positionItem4 0.9s ease-in-out 1 forwards;
+}
+@keyframes positionItem4{
+    from{
+        transform: var(--item4-transform);
+        filter: var(--item4-filter);
+        z-index: var(--item4-zIndex);
+        opacity: var(--item4-opacity);
+    }
+}
+.carousel.next .list .item:nth-child(4){
+    animation: positionItem5 1.1s ease-in-out 1 forwards;
+}
+@keyframes positionItem5{
+    from{
+        transform: var(--item5-transform);
+        filter: var(--item5-filter);
+        z-index: var(--item5-zIndex);
+        opacity: var(--item5-opacity);
+    }
+}
+/* effect click prev button*/
+.carousel.prev .list .item:nth-child(2){
+    animation: positionItem1 0.5s ease-in-out 1 forwards;
+}
+@keyframes positionItem1{
+    from{
+        transform: var(--item1-transform);
+        filter: var(--item1-filter);
+        z-index: var(--item1-zIndex);
+        opacity: var(--item1-opacity);
+    }
+}
+.carousel.prev .list .item:nth-child(3){
+    animation: positionItem2 0.7s ease-in-out 1 forwards;
+}
+.carousel.prev .list .item:nth-child(4){
+    animation: positionItem3 0.9s ease-in-out 1 forwards;
+}
+.carousel.prev .list .item:nth-child(5){
+    animation: positionItem4 1.1s ease-in-out 1 forwards;
+}
+/* show detail */
+.carousel .list .item{
+    transition: left 0.5s, opacity 0.5s, width 0.5s;
+}
+.carousel.showDetail .list .item:nth-child(3),
+.carousel.showDetail .list .item:nth-child(4){
+    left: 100%;
+    opacity: 0;
+    pointer-events: none;
+}
+.carousel.showDetail .list .item:nth-child(2){
+    width: 100%;
+}
+.carousel.showDetail .list .item:nth-child(2) .intro{
+    opacity: 0;
+    pointer-events: none;
+}
+.carousel .list .item:nth-child(2) img{
+    transition: right 0.5s;
+}
+.carousel.showDetail .list .item:nth-child(2) img{
+    transition: left 0.5s;
+    left: 0;
+    width: 45%;
+}
+.carousel.showDetail .list .item:nth-child(2) .detail{
+    opacity: 1;
+    pointer-events: auto;
+    width: 50%;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.carousel.showDetail .list .item .detail .title{
+    font-size: 4em;
+}
+.carousel.showDetail .list .item .detail .especifications{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    border-top: 1px solid #5555;
+    margin-top: 20px;
+    margin-top: 1em;
+    font-size: 0.8em;
+}
+.carousel.showDetail .list .item .detail .specifications div{
+    width: 90px;
+    text-align: center;
+    flex-shrink: 0;
+}
+.carousel.showDetail .list .item .detail .specifications div p:nth-child(1){
+    font-weight: bold;
+}
+.carousel.showDetail .list .item .detail .checkout button{
+    font-family: Poppins;
+    background-color: transparent;
+    border: 1px solid #555;
+    margin-left: 5px;
+    font-weight: 500;
+}
+.carousel.showDetail .list .item .detail .checkout button:nth-child(2){
+    background-color: #693eff;
+    color: #eee;
+}
+.carousel.showDetail .list .item:nth-child(2) .detail .title,
+.carousel.showDetail .list .item:nth-child(2) .detail .des,
+.carousel.showDetail .list .item:nth-child(2) .detail .specifications,
+.carousel.showDetail .list .item:nth-child(2) .detail .checkout{
+    /* opacity: 0; */
+    animation: showContent 0.5s 1s ease-in-out 1 forwards;
+}
+.carousel.showDetail .list .item:nth-child(2) .detail .des{
+    animation-delay: 1.2s;
+}
+.carousel.showDetail .list .item:nth-child(2) .detail .specifications{
+    animation-delay: 1.4s;
+}
+.carousel.showDetail .list .item:nth-child(2) .detail .checkout{
+    animation-delay: 1.4s;
+}
+.carousel.showDetail #next,
+.carousel.showDetail #prev{
+    opacity: 0;
+    pointer-events: none;
+}
+.carousel.showDetail #back{
+    opacity: 1;
+    pointer-events: auto;
+}
+/*-----------------*/
+.canvas-container {
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.canvas-container img,
+.canvas-container canvas {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+#myCanvas {
+    background: #f0f0f0;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+/*----------------*/
+.carousel::before{
+    width: 500px;
+    height: 300px;
+    content: '';
+    background-image: linear-gradient(
+        45deg, #dc422a, blue
+    );
+    position: absolute;
+    z-index: -1;
+    border-radius: 20% 30% 80% 10%;
+    filter: blur(150px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-10%, -50%);
+    transition: 1s;
+}
+.carousel.showDetail::before{
+    transform: translate(-100%, -50%) rotate(70deg);
+}
+@media screen and (max-width: 991px){
+    /* ipad -table*/
+    .carousel .list .item{
+        width: 90%;
+    }
+    .carousel .list .detail .specifications{
+        overflow: auto;
+    }
+}
+@media screen and (max-width: 767px){
+    /* mobile */
+    .carousel .list .item{
+        width: 100%;
+        font-size: 10px;
+    }
+    .carousel{
+        height: 600px;
+    }
+    .carousel .list{
+        height: 100%;
+    }
+    .carousel .list .item .intro{
+        width: 50%;
+    }
+    .carousel .list .item img{
+        width: 40%;
+    }
+    .carousel.showDetail .list .item .detail .title{
+        font-size: 2em;
+    }
+    .carousel.showDetail .list .item .detail .des{
+        height: 100px;
+        overflow: auto;
+    }
+    .carousel.showDetail .list .item .detail .checkout{
+        display: flex;
+        width: max-content;
+        float: right;
+    }
+}
+
+/* Estilos para el gráfico de barras dinámicas */
+.bars-canvas-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bars-header h3 {
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.bars-header p {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 0.8em;
+}
+
+.bars-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-end;
+    height: 280px;
+    margin: 0 auto;
+}
+
+.bar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60px;
+}
+
+.bar {
+    width: 100%;
+    background: linear-gradient(to top, #4CAF50, #45a049);
+    border-radius: 8px 8px 0 0;
+    transition: height 0.3s ease;
+    min-height: 5px;
+    cursor: pointer;
+}
+
+.bar:hover {
+    background: linear-gradient(to top, #66bb6a, #4caf50);
+    transform: scaleX(1.05);
+    transition: all 0.3s ease;
+}
+
+.bar-label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
+    font-size: 0.85em;
+}
+
+.bar-value {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+/* Ajustes responsive para las barras */
+@media screen and (max-width: 991px) {
+    .bars-container {
+        gap: 15px;
+    }
+    
+    .bar-item {
+        width: 50px;
+    }
+    
+    .bar-label {
+        font-size: 0.75em;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .bars-container {
+        gap: 10px;
+        height: 200px;
+    }
+    
+    .bar-item {
+        width: 40px;
+    }
+    
+    .bar-label {
+        font-size: 0.7em;
+    }
+    
+    .bar-value {
+        font-size: 10px;
+    }
+    
+    .bars-header h3 {
+        font-size: 1em;
+    }
+    
+    .bars-header p {
+        font-size: 0.7em;
+    }
+}
+
+/* Animación de entrada para las barras */
+@keyframes barRise {
+    from {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+    to {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+.bar {
+    animation: barRise 0.5s ease-out;
+    transform-origin: bottom;
+}
+
+/* Estilos para el canvas de barras dinámicas */
+#barsCanvas {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    background: #f0f0f0;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.canvas-container {
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.canvas-container img,
+.canvas-container canvas {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+/* Asegurar que el canvas de barras tenga la misma posición que desplaza.png */
+.carousel .list .item:nth-child(2) #barsCanvas {
+    position: relative;
+    /* width: 100%; */
+}
+
+/* Ajuste para el modo detalle */
+.carousel.showDetail .list .item:nth-child(2) #barsCanvas {
+    left: 0;
+    /* width: 45%; */
+}
+
+/* Estilos para el canvas de puntos dinámicos */
+#pointsCanvas {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    background: #f0f0f0;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Asegurar que todos los canvases tengan la misma posición */
+.canvas-container {
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.canvas-container img,
+.canvas-container canvas {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+/* Ajustes para el modo detalle */
+.carousel.showDetail .list .item:nth-child(2) #barsCanvas,
+.carousel.showDetail .list .item:nth-child(3) #pointsCanvas {
+    left: 0;
+    /* width: 45%; */
+    transition: left 0.5s;
+}
+
+/* Estilos para el canvas de coseno dinámico */
+#cosCanvas {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Asegurar que todos los canvases tengan la misma posición */
+.canvas-container {
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.canvas-container img,
+.canvas-container canvas {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+/* Ajustes para el modo detalle */
+.carousel.showDetail .list .item:nth-child(2) #barsCanvas,
+.carousel.showDetail .list .item:nth-child(3) #pointsCanvas,
+.carousel.showDetail .list .item:nth-child(4) #cosCanvas {
+    left: 0;
+    /* width: 45%; */
+    transition: left 0.5s;
+}
